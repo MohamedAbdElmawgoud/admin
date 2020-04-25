@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>message</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form>
+    <ion-item>
+      <ion-label>header:</ion-label>
+      <ion-input type="text" required name="header" [(ngModel)]="header"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>body:</ion-label>
+        <ion-input type="text" required name="body" [(ngModel)]="body"></ion-input>
+      </ion-item>
+      <ion-button (click)="creatmessage(header , body)">add</ion-button>
+  </form>
+
+</ion-content>

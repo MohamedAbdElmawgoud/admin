@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="tertiary"> 
+    <ion-title>setting App</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form>
+        <ion-item>
+          <ion-label>Reward point:</ion-label>
+          <ion-input type="number" required name="points" [(ngModel)]="points"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+            <ion-label>version:</ion-label>
+            <ion-input type="number" required name="version" [(ngModel)]="version"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label>message:</ion-label>
+              <ion-input type="text" required name="message" [(ngModel)]="message"></ion-input>
+            </ion-item>
+        
+            <ion-item>
+                <ion-label>email:</ion-label>
+                <ion-input type="email" required name="email" [(ngModel)]="email"></ion-input>
+              </ion-item>
+          
+            
+                <ion-item>
+                    <ion-label>Application URl:</ion-label>
+                    <ion-input type="text" required name="AppURl" [(ngModel)]="AppURl"></ion-input>
+                  </ion-item>
+          <ion-button (click)="creatSetting(email,version,message,AppURl,points)">add</ion-button>
+      </form>
+</ion-content>

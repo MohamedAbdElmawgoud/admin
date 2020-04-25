@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="tertiary">    
+    <ion-title>compaign</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <table class="table table2" *ngIf="status">
+    <thead>
+      <tr>
+         
+        <th scope="col">profile Photo</th>
+        <th scope="col">Name</th>
+        <th scope="col">video</th>
+        <th scope="col">second</th>
+        <th scope="col">point</th>
+        <th scope="col">type</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let compaign of compaigns;index as i">
+      <tr>
+        
+         
+          <td style="width: 20%">
+          <img src={{compaign.photoURL}} alt="">
+          </td>
+        <td style="width: 20%">{{compaign.displayName}}</td>
+        <td style="width: 20%;" >https://www.youtube.com/watch?v={{compaign.videoUrl}}</td>
+        
+        <td style="width: 20%">{{compaign.second}}</td>
+        <td style="width: 20%">{{compaign.point}}</td>
+        <td style="width: 20%">{{compaign.type}}</td>
+
+        <!-- <td style="width: 20%"> <button (click)= "deleteUser(usersid[i])">Delete</button> </td> -->
+      </tr>
+     
+    </tbody>
+  </table>
+</ion-content>

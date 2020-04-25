@@ -20,6 +20,26 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
+        path: 'setting-app',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../setting-app/setting-app.module').then(m => m.SettingAppPageModule)
+          }
+        ]
+      },
+      {
+        path: 'message',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../message/message.module').then(m => m.MessagePageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

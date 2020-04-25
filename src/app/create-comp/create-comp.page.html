@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Create Compaign
+        <strong>{{showPoint}}</strong>
+
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!video">
+    <!-- <label>video links</label>
+     -->
+    <ion-item>
+      <ion-input #videoEl placeholder="Add Link"></ion-input>
+      <button class="submit" (click)="getVideo(videoEl)">
+      Add
+        </button>
+    </ion-item>
+
+    
+  </div>
+
+  <div *ngIf="video">
+    <ion-card>
+   
+        <youtube-player 
+        [videoId]="videoId"
+        suggestedQuality="medium"
+        [height]="150"
+        [width]="350"
+        (ready)="changeStatus($event)"
+        > 
+        <!-- [endSeconds]="60" -->
+      </youtube-player>
+    </ion-card>
+    <label class="header"> Order Settings</label>
+    <hr>
+    <form>
+      <!-- <ion-item lines="none">
+        <label>Number Of Subscribers</label>
+
+        *ngFor="let item of numberOfSubscribers; index as i;"
+
+        <ion-select ([ngModel])="Subscribe" (ionChange)=" OnSubscribe($event)" placeholder="10">
+          <ion-select-option value='10'>10</ion-select-option>
+          <ion-select-option value='20'>20</ion-select-option>
+          <ion-select-option value='30'>30</ion-select-option>
+          <ion-select-option value='40'>40</ion-select-option>
+          <ion-select-option value='50'>50</ion-select-option>
+          <ion-select-option value='60'>60</ion-select-option>
+        </ion-select>
+      </ion-item> -->
+
+      <!-- <ion-item lines="none">
+        <label>Number Of Likes</label>
+
+        *ngFor="let item of numberOfSubscribers; index as i;"
+        <ion-select ([ngModel])="likes" (ionChange)=" Onlikes($event)" placeholder="10">
+          <ion-select-option value='10'>10</ion-select-option>
+          <ion-select-option value='20'>20</ion-select-option>
+          <ion-select-option value='30'>30</ion-select-option>
+          <ion-select-option value='40'>40</ion-select-option>
+          <ion-select-option value='50'>50</ion-select-option>
+          <ion-select-option value='60'>60</ion-select-option>
+        </ion-select>
+      </ion-item> -->
+
+
+      <ion-item lines="none" >
+        <label>Number Of views</label>
+
+        <!-- *ngFor="let item of numberOfSubscribers; index as i;" -->
+        <ion-select ([ngModel])="view"
+         (ionChange)=" Onview($event)" placeholder="10" >
+      <div *ngFor="let view of Views">
+         
+          <ion-select-option value={{view}}>{{view}}</ion-select-option>
+      </div>
+          
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none">
+        <label>Time requird (second)</label>
+
+        <!-- *ngFor="let item of numberOfSubscribers; index as i;" -->
+        <ion-select ([ngModel])="sec" (ionChange)=" Onsec($event)" placeholder="45">
+            <div *ngFor="let second of seconds">
+                
+                 <ion-select-option value={{second}}>{{second}}</ion-select-option>
+             </div>
+        </ion-select>
+      </ion-item>
+      <hr>
+      <ion-item lines="none">
+        <label>Vip account (reduce 10%)</label>
+
+        <button style="width:70px;font-size: 12px">
+
+      Upgrade
+        </button>
+
+      </ion-item>
+
+      <ion-item lines="none" style="color:#4458ba; font-style: bold; font-size: 18px;">
+        <label>Total coins</label>
+
+        <button style="color:#4458ba ;font-style: bold; width:70px">
+          {{point}}
+
+        </button>
+
+      </ion-item>
+<hr>
+      <button class="done" (click)="createComp()">
+    Done
+
+      </button>
+    </form>
+  </div>
+</ion-content>

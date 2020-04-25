@@ -1,17 +1,93 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="tertiary"> 
     <ion-title>
-      Tab 2
+      Report
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+    <ion-toolbar color="tertiary">
+      
+      
+      <ion-title>Fog tube
+      
+    </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-content>
+<div *ngIf="status">
+  <ion-card class="main" (click)="UsersDetails()">
+    <ion-label  class="left">
+      Number of user : {{NumberOfUser}}
+    </ion-label>
+
+  </ion-card>
+  <ion-card class="main" (click)="compaignDetails()">
+    <ion-label  class="left">
+      Number of Compaign : {{NumberOfCompaign}}
+    </ion-label>
+  </ion-card>
+</div>
+
+
+  <!-- <table class="table" *ngIf="status">
+    <thead>
+      <tr>
+         
+        <th scope="col">profile Photo</th>
+        <th scope="col">Name</th>
+        <th scope="col">email</th>
+        <th scope="col">point</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of users;index as i">
+      <tr>
+        
+         
+          <td style="width: 20%">
+          <img src={{user.photoURL}} alt="">
+          </td>
+        <td style="width: 20%">{{user.displayName}}</td>
+        <td style="width: 20%">{{user.email}}</td>
+        <td style="width: 20%">{{user.point}}</td>
+        <td style="width: 20%"> <button (click)= "deleteUser(usersid[i])">Delete</button> </td>
+      </tr>
+     
+    </tbody>
+  </table> -->
+
+  <!-- <table class="table table2" *ngIf="status">
+    <thead>
+      <tr>
+         
+        <th scope="col">profile Photo</th>
+        <th scope="col">Name</th>
+        <th scope="col">video</th>
+        <th scope="col">second</th>
+        <th scope="col">point</th>
+        <th scope="col">type</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let compaign of compaigns;index as i">
+      <tr>
+        
+         
+          <td style="width: 20%">
+          <img src={{compaign.photoURL}} alt="">
+          </td>
+        <td style="width: 20%">{{compaign.displayName}}</td>
+        <td style="width: 20%;" >https://www.youtube.com/watch?v={{compaign.videoUrl}}</td>
+        <td style="width: 20%">{{compaign.point}}</td>
+        <td style="width: 20%">{{compaign.second}}</td>
+        <td style="width: 20%">{{compaign.type}}</td>
+
+        <!-- <td style="width: 20%"> <button (click)= "deleteUser(usersid[i])">Delete</button> </td> 
+      </tr>
+     
+    </tbody>
+  </table> -->
 </ion-content>

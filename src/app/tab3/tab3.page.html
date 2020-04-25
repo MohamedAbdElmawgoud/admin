@@ -1,7 +1,6 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
+  <ion-toolbar color="tertiary">     <ion-title>
+      Add Offer
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,6 +11,29 @@
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
+ 
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <form>
+    <ion-item>
+      <ion-label>point:</ion-label>
+      <ion-input type="number" required name="points" [(ngModel)]="points"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>cash:</ion-label>
+        <ion-input type="number" required name="cash" [(ngModel)]="cash"></ion-input>
+      </ion-item>
+      <ion-button (click)="creatOffer(points , cash)">add</ion-button>
+  </form>
+
+  <ion-card class="main" *ngFor="let offer of AllOffers">
+      <label class="left">
+       {{ offer.point}} Points
+        
+      </label> 
+      <label>
+          {{ offer.cash}}$
+      </label>
+      <ion-button (click)="delete(offer.key)">delete</ion-button>
+    </ion-card>
 </ion-content>

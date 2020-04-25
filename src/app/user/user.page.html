@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="tertiary">    
+     <ion-title>user</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <table class="table">
+    <thead>
+      <tr>
+         
+        <th scope="col">profile Photo</th>
+        <th scope="col">Name</th>
+        <th scope="col">email</th>
+        <th scope="col">point</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let user of users;index as i">
+      <tr>
+        
+         
+          <td style="width: 20%">
+          <img src={{user.photoURL}} alt="">
+          </td>
+        <td style="width: 20%">{{user.displayName}}</td>
+        <td style="width: 20%">{{user.email}}</td>
+        <td style="width: 20%">{{user.point}}</td>
+        <td style="width: 20%"> <button (click)= "deleteUser(usersid[i])">Delete</button> </td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+</ion-content>

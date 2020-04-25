@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details Campaign
+  </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content dir="ltr">
+  <ion-card>
+    <p>
+      created Time
+    </p>
+    <h3>
+      {{compdata  | date:'yyyy-MM-dd'}}
+
+    </h3>
+    <h2>
+      <ion-icon name="checkmark-circle" class="mark"></ion-icon>
+      {{view}}/{{done}} view
+
+    </h2>
+    <hr>
+
+  </ion-card>
+
+  <h5>list of people watched your video</h5>
+  <div *ngFor="let user of viewers">
+
+    <h4> {{user.displayName}}
+    </h4>
+    <img src={{user.photoURL}}>
+
+  </div>
+
+
+<button (click)="deleteComp()"> delete</button>
+</ion-content>

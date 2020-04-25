@@ -1,0 +1,78 @@
+ion-content ion-toolbar {
+    --background: translucent;
+  }
+  .icon{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 200px;
+    margin-right: 45%;
+    margin-left: 45%;
+  }
+  button{
+    
+    float: left;
+    background: #fd4081;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    margin-top: 30%;
+    margin-left: 40px;
+    margin-right: 40px;
+    color: white;
+    font-size: 25px;
+    font-style: bold;
+  }
+  p{
+    text-align: center;
+    font-size: 12px;
+    
+  }
+  .logIn{
+    width: 80px;
+    height: 80px;
+  }
+  .point{
+    display: inline;
+    margin-left: 80%;
+  }
+  ion-card{
+    height: 100px;
+  }
+  img{
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-left: 67%;
+    margin-top: -8%;
+    position: absolute;
+    
+  }
+  .view{
+    text-align: left;
+    margin-left: 46%;
+    margin-top: 10%;
+    font-size: 15px;
+    //display: inline;
+  }
+  .mark{
+    color: #2BC568;
+    font-size: 15px;
+    margin-top: 2%;
+    margin-right: 17%;
+    margin-left:2%
+  }
+  hr {
+    border-top: 4px solid #fd4081;
+    width: 58%;
+    margin-right: 18%;
+    margin-left: 13%;
+  }
+  .flex{
+    display: flex;
+    flex-direction: row-reverse;
+   // margin-right: 40%
+  }
+  strong{
+    float: right;
+    margin-right: 3%;
+  }
