@@ -13,12 +13,14 @@
     <thead>
       <tr>
          
-        <th scope="col">profile Photo</th>
+        <th scope="col">Photo</th>
         <th scope="col">Name</th>
         <th scope="col">video</th>
-        <th scope="col">second</th>
+        <th scope="col">sec</th>
         <th scope="col">point</th>
         <th scope="col">type</th>
+        <th scope="col">action</th>
+        
       </tr>
     </thead>
     <tbody *ngFor="let compaign of compaigns;index as i">
@@ -35,7 +37,7 @@
         <td style="width: 20%">{{compaign.point}}</td>
         <td style="width: 20%">{{compaign.type}}</td>
 
-        <!-- <td style="width: 20%"> <button (click)= "deleteUser(usersid[i])">Delete</button> </td> -->
+        <td style="width: 20%"> <button (click)= "deleteCompaign(compaign.key)">Delete</button> </td>
       </tr>
      
     </tbody>

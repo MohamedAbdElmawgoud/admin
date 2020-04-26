@@ -66,4 +66,20 @@ status = true;
     return  this.admin.getDataOfUser(id)
     
      }
+  
+  deleteCompaign(data){
+    
+    this.campingsService.deletecamping(data);
+    this.presentAlert('Compaign Deleted')
+  }
+  async presentAlert(title) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+     // subHeader: 'Subtitle',
+      message: title,
+      buttons: ['OK']
+    });
+  
+    await alert.present();
+  }
 }
