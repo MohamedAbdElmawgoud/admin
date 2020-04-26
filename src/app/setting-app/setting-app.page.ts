@@ -44,3 +44,4 @@ export class SettingAppPage implements OnInit {
   await alert.present();
 }
 }
+ 
