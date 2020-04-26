@@ -47,28 +47,33 @@ export class DetailsCampaignPage implements OnInit {
   }
 
   
-  getCompain(createdata) {
+  getCompain(createdData) {
+    console.log(createdData)
     this.campingsService.getcampingsList((res =>
-      res.orderByChild('key')
-        .equalTo(createdata))).snapshotChanges().pipe(
+      res.orderByChild('ownerId')
+        .equalTo('admin'))).snapshotChanges().pipe(
           map((changes: Array<any>) =>
             changes.map(c =>
               ({ key: c.payload.key, ...c.payload.val() })
             ) 
           )
         ).subscribe(comp => {
-        this.compInfo = comp[0];
-        console.log('cscsc',this.compInfo)
+       comp.forEach(element => {
+         if(element.createdData == createdData){
+           this.compInfo = element
+         }
+       });
+        console.log('cscsc', this.compInfo)
          
-      //  this.getUser(comp[0].ownerId)
+       this.getUser(this.compInfo.ownerId)
         
-        this.compdata = comp[0].createdData;
-       this.key = comp[0].key
-        this.view = comp[0].view
-          comp[0].done.forEach( async (ele) => {
+        this.compdata = this.compInfo.createdData;
+       this.key = this.compInfo.key
+        this.view = this.compInfo.view
+        this.compInfo.done.forEach( async (ele) => {
            let user =  await this.getUser(ele)
            this.viewers.push(user.docs[0].data())
-           this.done = comp[0].done.length
+           this.done = this.compInfo.done.length
           })
         });
   }
