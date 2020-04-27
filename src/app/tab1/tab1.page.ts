@@ -59,7 +59,7 @@ async createCompinge() {
                 this.router.navigate(['create-subscripe'], {
                   queryParams: {
                     type: e.data.values
-                  }
+                   }
                 });
               }
     else{
