@@ -53,13 +53,22 @@ async createCompinge() {
   await alert.present();
 
   alert.onDidDismiss().then(e=>{
-    if(e.data){
+    if (e.data) {
+      
+              if (e.data.values == 'channel') {
+                this.router.navigate(['create-subscripe'], {
+                  queryParams: {
+                    type: e.data.values
+                  }
+                });
+              }
+    else{
       this.router.navigate(['create-comp'] , {
         queryParams : {
           type : e.data.values
         }
       });
-
+    }
     }
     
   })
@@ -83,10 +92,7 @@ getCompinge(){
         ).subscribe(comp => {
       this.compaignValue = comp
         comp.forEach(element => {
-         // this.compaignValue.push(element)
-          //this.view.push(element.view)
-          
-        //     this.viewer.push(element.done)
+         
           this.done=element.done? element.done.length : 0
           this.view.push(this.done);
         // this.createdDate.push(element.createdData) 
@@ -102,8 +108,9 @@ getCompinge(){
   
 } 
 
-getDetailsOfComp(createdate ){
-  this.router.navigate(['details-campaign'] , {queryParams : { data: createdate.key } });
+getDetailsOfComp(data ){
+ // console.log(data.createdData)
+  this.router.navigate(['details-campaign'] , {queryParams : { data: data.createdData } });
 }
 
 }
