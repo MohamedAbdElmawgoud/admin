@@ -105,24 +105,7 @@ export class CreateCompPage implements OnInit {
         displayName:'admin',
         done: []
       }
-      // this.comp.getcampingsList((res =>
-      //   res.orderByChild('ownerId')
-      //     .equalTo('admin'))).snapshotChanges().pipe(
-      //       map((changes: Array<any>) =>
-      //         changes.map(c =>
-      //           ({ key: c.payload.key, ...c.payload.val() })
-      //         )
-      //       )
-      //     ).subscribe(e=>{
-      //       lenOfComp =e.length;
-      //       if(lenOfComp==5){
-      //          this.presentAlert('You have maximum Of compaign')
-      //       }
-           
-             
-      //     })
-
-    //  
+     
     this.comp.createcamping(this.camping);
     this.presentAlert('Added success');
     this.route.navigate([''])

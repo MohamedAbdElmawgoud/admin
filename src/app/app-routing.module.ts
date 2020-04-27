@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path: 'tabs/message',
     loadChildren: () => import('./message/message.module').then( m => m.MessagePageModule)
+  },
+  {
+    path: 'create-subscripe',
+    loadChildren: () => import('./create-subscripe/create-subscripe.module').then( m => m.CreateSubscripePageModule)
   }
 ];
 @NgModule({

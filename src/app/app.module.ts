@@ -8,6 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule, HttpClient } from  '@angular/common/http';
 
 import { AngularFireModule } from '@angular/fire'; 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -35,6 +36,7 @@ export const config = {
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     AngularFireDatabaseModule, 
+    HttpClientModule,
     AppRoutingModule],
   providers: [
     StatusBar,

@@ -1,0 +1,96 @@
+
+hr {
+    border-top: 1.5px solid #A2A2A2;
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+  ion-card{
+      height: 25%;
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+   // pointer-events: none //This line is the key!
+  }
+  label{
+      width: 70%;
+  }
+.header{
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-top: 10%;
+}
+input {
+    width: 35%;
+    float: right;
+    margin-right: 5px;
+    margin-left: 5px;
+   // background: #d6d8d7;
+    padding: 5px;
+    border-radius: 10%;
+}
+ion-select-option{
+    width: 10%;
+}
+button{
+    padding: 10px;
+    float: right;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #696C6B;
+}
+.submit{
+    width: 20%; 
+    color:#FFFFFF;
+    float: left;
+    margin-right: 3px;
+    margin-left: 3px;
+    font-style: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    background: #fd4081;
+    border-radius: 5%;
+    width: 50%;
+    margin: auto;
+    display: block;
+    margin-top: 11px;
+    float: none;
+}
+
+ion-select{
+    display: inline;
+    width:200px;
+    height: 40px;
+    color: #696C6B;
+    background: #D0D0D0;
+    margin-left: 3%;
+}
+.done{
+    text-transform: uppercase;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    color: black;
+}
+strong{
+    float: right;
+  }
+
+  .channel {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    margin-top: 13px;
+    box-shadow: 1px 1px 12px 5px #00000030;
+    img{
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+    }
+  } 
+
+  

@@ -53,13 +53,22 @@ async createCompinge() {
   await alert.present();
 
   alert.onDidDismiss().then(e=>{
-    if(e.data){
+    if (e.data) {
+      
+              if (e.data.values == 'channel') {
+                this.router.navigate(['create-subscripe'], {
+                  queryParams: {
+                    type: e.data.values
+                  }
+                });
+              }
+    else{
       this.router.navigate(['create-comp'] , {
         queryParams : {
           type : e.data.values
         }
       });
-
+    }
     }
     
   })

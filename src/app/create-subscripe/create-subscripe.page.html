@@ -1,0 +1,157 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Create Subscribe camping 
+      <strong>{{showPoint}}</strong>
+
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="step == 1">
+
+    <ion-item>
+      <ion-input #videoEl (ionChange)="videoChange($event)" placeholder="Add video Link"></ion-input>
+      <br>
+
+
+
+
+    </ion-item>
+    <div class="channel" *ngIf="userChannel.channel">
+      <img src="{{userChannel.channel.thumbnails.medium.url}}" alt="">
+      <h3>
+        {{userChannel.channel.title}}
+      </h3>
+    </div>
+    <p>
+      <!-- {{'you must put  -->
+    </p>
+    <ion-item>
+      <label>Country</label>
+
+      <ion-select #country placeholder="{{'choose' }}">
+        <div *ngFor="let Country of countries">
+
+          <ion-select-option value={{Country}}>{{Country}}</ion-select-option>
+        </div>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <label>Interstates</label>
+
+      <ion-select #video placeholder="{{'choose' }}">
+        <div *ngFor="let video of videos">
+
+          <ion-select-option value={{video}}>{{video}}</ion-select-option>
+        </div>
+      </ion-select>
+    </ion-item>
+    <button class="submit" (click)="saveStepOne(video , country)">
+      Add Channel
+    </button>
+    <p style="color: #565656;padding: 10px;">
+    Please don't remove this video because we will save it for all your next campings
+    </p>
+  </div>
+
+
+  <div *ngIf="step == 2">
+
+    <div class="channel" *ngIf="userChannel.channel">
+      <img src="{{userChannel.channel.thumbnails.medium.url}}" alt="">
+      <h3>
+        {{userChannel.channel.title}}
+      </h3>
+    </div>
+    <form style="margin-top: 20px;">
+
+
+
+      <ion-item lines="none">
+        <label>Number Of Subscribes</label>
+
+        <!-- *ngFor="let item of numberOfSubscribers; index as i;" -->
+        <ion-select  #view (ionChange)="onChange(sec , view)" value="10" >
+          <div *ngFor="let view of Views">
+
+            <ion-select-option value={{view}}>{{view}}</ion-select-option>
+          </div>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none">
+        <label>Number Of likes</label>
+
+        <div style="
+        width: 192px;
+        background-color: #ddd;
+        padding: 10px;
+    ">
+          10
+        </div>
+      </ion-item>
+      <ion-item lines="none">
+        <label>Number Of views</label>
+
+        <div style="
+        width: 192px;
+        background-color: #ddd;
+        padding: 10px;
+    ">
+          10
+        </div>
+      </ion-item>
+
+      <ion-item lines="none">
+        <label>Time requird (second)</label>
+
+        <!-- *ngFor="let item of numberOfSubscribers; index as i;" -->
+        <ion-select #sec (ionChange)="onChange(sec , view)" value="60">
+          <div *ngFor="let second of seconds">
+
+            <ion-select-option value={{second}}>{{second}}</ion-select-option>
+          </div>
+        </ion-select>
+      </ion-item>
+      <hr>
+      <ion-item lines="none">
+        <label>Vip account (reduce 10%)</label>
+
+        <button style="width:70px;font-size: 12px">
+
+          Upgrade
+        </button>
+
+      </ion-item>
+
+      <ion-item lines="none" style="color:#4458ba; font-style: bold; font-size: 18px;">
+        <label>Total coins</label>
+
+        <button style="color:#4458ba ;font-style: bold; width:70px">
+          {{points}}
+
+        </button>
+
+      </ion-item>
+      <hr>
+      <button class="done" (click)="createComp(sec , view)">
+        Done
+
+      </button>
+    </form>
+
+  </div>
+
+
+
+
+
+
+
+</ion-content>
