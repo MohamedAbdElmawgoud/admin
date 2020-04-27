@@ -33,7 +33,7 @@ export class UserPage implements OnInit {
        this.usersid.push(element.payload.doc.id) 
       
      });
-     console.log('ids', this.usersid)
+  // console.log('ids', this.usersid)
     })
  
  
@@ -42,13 +42,13 @@ export class UserPage implements OnInit {
     //console.log('user is ',  e)
     this.users = [];
     e.forEach(element => {
-     //  if(element.photoURL == null){
-     //   element.photoURL = ''
-     //  }
+      if(element.photoURL == ''){
+       element.photoURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5BdmOpYjhT8eCXbPFKrfK-4Jx0DHd-ihLDzSuE6tCi1dK1yUwfPOlwoJS&s=10'
+      }
       
      this.users.push(element)
     });
-   // console.log(this.profileUrl)
+    console.log(this.users)
   })
   }
 }

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CreateSubscripePage implements OnInit {
   user;
-  step = 0;
+  step = 1;
   countries = countryList;
   videos = videos;
   userChannel: any = {};
@@ -66,13 +66,13 @@ export class CreateSubscripePage implements OnInit {
   async saveStepOne(c, v) {
 
     if (this.userChannel.channel) {
-      let user = this.userService.getDataOfUser(this.user.uid).then(e => {
+      let user = this.userService.getDataOfUser('admin').then(e => {
 
-        let UserEdited = {
-          ...e.docs[0].data(),
-          channel: this.userChannel
-        }
-        this.userService.updateUser(UserEdited);
+        // let UserEdited = {
+        //   ...e.docs[0].data(),
+        //   channel: this.userChannel
+        // }
+       // this.userService.updateUser(UserEdited);
         this.step = 2
       });
     } else {
@@ -88,7 +88,7 @@ export class CreateSubscripePage implements OnInit {
     //   this.presentAlert("You don't have enough points")
     //   return
     // }
-    let user = await this.user;
+   // let user = await this.user;
 
     let camping = {
       view: view.el.value,
@@ -97,7 +97,7 @@ export class CreateSubscripePage implements OnInit {
       point: this.points,
       channel: this.userChannel,
       createdData: Date.now(),
-      ownerId: user.uid
+      ownerId: 'admin'
     }
    // this.UpdateUSerPoints(-this.points)
 
