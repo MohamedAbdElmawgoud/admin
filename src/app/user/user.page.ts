@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from "@ionic/angular";
 import { map } from "rxjs/internal/operators/map";
 import { AdminService } from "../admin/admin.service";
+import { Router } from "@angular/router";
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.page.html',
@@ -19,12 +21,14 @@ export class UserPage implements OnInit {
   
   
   constructor(
+    public router: Router,    
     public alertController: AlertController ,
     private admin :AdminService
   ) { }
 
   ngOnInit() {
     this.getUsers();
+    //this.updateUser(1587319417226,2000)
   }
   getUsers(){
   
@@ -50,5 +54,16 @@ export class UserPage implements OnInit {
     });
     console.log(this.users)
   })
+  }
+  deleteUser(id){
+    this.admin.deleteUser(id)
+  }
+  updateUser(id){
+    this.router.navigate(['update-user'] ,{
+      queryParams: {
+        id: id 
+       }
+    });
+   
   }
 }

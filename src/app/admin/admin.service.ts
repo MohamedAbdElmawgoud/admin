@@ -35,6 +35,7 @@ export class AdminService {
    }
 
    getDataOfUser(id) {
+     console.log(id)
     return  this.firestore.collection('users')
       .ref.where('uid', '==', id).get()
   }

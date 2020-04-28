@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'create-subscripe',
     loadChildren: () => import('./create-subscripe/create-subscripe.module').then( m => m.CreateSubscripePageModule)
+  },
+  {
+    path: 'update-user' ,data: {data : ''},
+    loadChildren: () => import('./update-user/update-user.module').then( m => m.UpdateUserPageModule)
   }
 ];
 @NgModule({

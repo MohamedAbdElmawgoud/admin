@@ -16,16 +16,18 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { DatePipe } from '@angular/common';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
+import { MessagingService } from './service/messaging.service';
 export const config = {
-  apiKey: "AIzaSyDazhWMFHM2GRAjs8SYSSL8GrpqWZDdHAs",
-  authDomain: "fog-tube.firebaseapp.com",
-  databaseURL: "https://fog-tube.firebaseio.com",
-  projectId: "fog-tube",
-  storageBucket: "fog-tube.appspot.com",
-  messagingSenderId: "693510009864",
-  appId: "1:693510009864:web:bf27397619adbc94fc4dbd",
-  measurementId: "G-7ZQSLFG70L"
+   apiKey: "AIzaSyDlWNjH4XsEHVkWceFtavf8e7Qq9fKgQwU",
+  authDomain: "fir-7e3e0.firebaseapp.com",
+  databaseURL: "https://fir-7e3e0.firebaseio.com",
+  projectId: "fir-7e3e0",
+  storageBucket: "fir-7e3e0.appspot.com",
+  messagingSenderId: "941729484801",
+  appId: "1:941729484801:web:aabacc4af4907bc1203000",
+  measurementId: "G-TFXWLDL6QG"
 };
 @NgModule({
   declarations: [AppComponent],
@@ -36,12 +38,14 @@ export const config = {
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     AngularFireDatabaseModule, 
+    AngularFireMessagingModule,    
     HttpClientModule,
     AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,
     DatePipe,
+    MessagingService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class CreateSubscripePage implements OnInit {
   user;
-  step = 1;
+  step = 0;
   countries = countryList;
   videos = videos;
   userChannel: any = {};
@@ -38,12 +38,14 @@ export class CreateSubscripePage implements OnInit {
     this.user.channel = null;
     if (!this.user.channel) {
       this.step = 1;
-    } else {
+    } 
+    else {
       this.userChannel = this.user.channel
 
     }
   }
   async  videoChange(e) {
+    console.log(e.target.value)
     let scrubbed = e.target.value.slice(e.target.value.indexOf('=') + 1)
     if (e.target.value.search('=') == -1) {
       scrubbed = e.target.value.slice(e.target.value.indexOf('be/') + 3)
@@ -66,13 +68,13 @@ export class CreateSubscripePage implements OnInit {
   async saveStepOne(c, v) {
 
     if (this.userChannel.channel) {
-      let user = this.userService.getDataOfUser('admin').then(e => {
+      let user = this.userService.getDataOfUser(this.user.uid).then(e => {
 
-        // let UserEdited = {
-        //   ...e.docs[0].data(),
-        //   channel: this.userChannel
-        // }
-       // this.userService.updateUser(UserEdited);
+        let UserEdited = {
+          ...e.docs[0].data(),
+          channel: this.userChannel
+        }
+        this.userService.updateUser(UserEdited);
         this.step = 2
       });
     } else {
@@ -88,7 +90,7 @@ export class CreateSubscripePage implements OnInit {
     //   this.presentAlert("You don't have enough points")
     //   return
     // }
-   // let user = await this.user;
+    let user = await this.user;
 
     let camping = {
       view: view.el.value,
@@ -97,7 +99,7 @@ export class CreateSubscripePage implements OnInit {
       point: this.points,
       channel: this.userChannel,
       createdData: Date.now(),
-      ownerId: 'admin'
+      ownerId: user.uid
     }
    // this.UpdateUSerPoints(-this.points)
 
