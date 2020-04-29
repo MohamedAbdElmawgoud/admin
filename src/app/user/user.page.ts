@@ -66,4 +66,27 @@ export class UserPage implements OnInit {
     });
    
   }
+  blockUser(id){
+    let user;
+    this.admin.getDataOfUser(id).then(e=>{
+      
+           // console.log(e)
+             user = e.docs[0].data() 
+             user.block = true;
+             console.log('afda',user)
+             this.admin.updateUser(user);
+             this.presentAlert('user blocked successful')
+          }) 
+    
+  }
+  async presentAlert(title) {
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      // subHeader: 'Subtitle', 
+      message: title,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 }

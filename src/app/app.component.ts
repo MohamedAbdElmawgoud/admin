@@ -29,8 +29,8 @@ export class AppComponent {
     });
   }
   ngOnInit() {
-    this.messagingService.requestPermission()
-    this.messagingService.receiveMessage()
-    this.message = this.messagingService.currentMessage
+    // this.messagingService.requestPermission()
+    // this.messagingService.receiveMessage()
+    // this.message = this.messagingService.currentMessage
   }
 }

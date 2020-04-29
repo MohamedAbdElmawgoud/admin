@@ -50,7 +50,7 @@ points: number;
   async presentAlert(title) {
     const alert = await this.alertController.create({
       header: 'Alert',
-      // subHeader: 'Subtitle',
+      // subHeader: 'Subtitle', 
       message: title,
       buttons: ['OK']
     });
