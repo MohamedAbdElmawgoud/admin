@@ -26,9 +26,6 @@
                 "input": "src/assets",
                 "output": "assets"
               },
-              "src/firebase-messaging-sw.js", 
-              "src/manifest.json" 
-              ,
               
               {
                 "glob": "**/*.svg",

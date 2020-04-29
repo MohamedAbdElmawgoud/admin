@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OffersService , offers } from "../admin/offers.service";
 import { AlertController } from "@ionic/angular";
 import { map } from "rxjs/internal/operators/map";
+import { NotificationsService } from "../admin/notifications.service";
 
 @Component({
   selector: 'app-tab3',
@@ -14,8 +15,10 @@ export class Tab3Page {
  points: number;
  cash: number;
   constructor( public alertController: AlertController ,
-    private offersService : OffersService
+    private offersService : OffersService,
+    private noti :NotificationsService
   ) {
+    this.noti.notifications('hiiii','hellllllllllo')
     this.getOffers()
   }
 
