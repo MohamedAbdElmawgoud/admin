@@ -29,18 +29,23 @@ export class NotificationsService {
       
       });
       console.log('tock',this.tockens)
-     headers= new HttpHeaders({
-      Authorization: key , 
-          registration_ids :this.tockens
+      const options ={
+     headers: new HttpHeaders({
+      'Authorization': key , 
+          'registration_ids' :this.tockens
     })
+  }
    body={ "notification": {
       "title": title, 
       "body": content
       }
     }
-   // return ( this.httpClient.post('Https://fcm.googleapis.com/fcm/send/'+key,body,headers))
+    return ( this.httpClient.post('Https://fcm.googleapis.com/fcm/send',body,options).toPromise().then(res=>{
+      console.log(res)
     })
-    return (<any>await this.httpClient.post(`Https://fcm.googleapis.com/fcm/send`,body,headers)).toPromise()
+  )
+    })
+  //  return (<any>await this.httpClient.post(`Https://fcm.googleapis.com/fcm/send`,body,headers)).toPromise()
   
   }
   // return (<any>await this.httpClient.post(`Https://fcm.googleapis.com/fcm/send`+key,{
