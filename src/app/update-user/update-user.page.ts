@@ -12,6 +12,7 @@ export class UpdateUserPage implements OnInit {
   data: any;
   id: any;
 points: number;
+time: any;
   constructor( 
     public alertController: AlertController ,
     private admin :AdminService,
@@ -57,5 +58,20 @@ points: number;
 
     await alert.present();
   }
+makeVIP(expiredData){
+  let user ;
+  // console.log(this.id)
+   this.admin.getDataOfUser(this.id).then(e=>{
 
+    // console.log(e)
+      user = e.docs[0].data() 
+      user.vip = {
+        status : true,
+        expired: expiredData
+      };
+      console.log('afda',user)
+      this.admin.updateUser(user);
+      this.presentAlert('This account will be VIP until  '+ expiredData)
+   }) 
+}
 }

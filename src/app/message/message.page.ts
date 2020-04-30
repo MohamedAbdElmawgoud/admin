@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService , message } from "../admin/message.service";
 import { AlertController } from "@ionic/angular";
 import { map } from "rxjs/internal/operators/map";
+import { NotificationsService } from "../admin/notifications.service";
 
 @Component({
   selector: 'app-message',
@@ -14,7 +15,8 @@ export class MessagePage  {
   header: string;
   body: string;
   constructor( public alertController: AlertController ,
-    private messageService : MessageService
+    private messageService : MessageService,
+    private noti :NotificationsService
   ) {
     this.getmessage()
   }
@@ -26,11 +28,12 @@ export class MessagePage  {
   }
   console.log(this.message)
   this.messageService.createmessage(this.message);
+  this.noti.notifications(header,body);
   this.presentAlert('message Added successfully')
  }
 
 getmessage(){
-  this.messageService.getmessageList((res => 
+  this.messageService.getmessageList((res =>  
     res.orderByChild('point'))).snapshotChanges().pipe(
       map((changes: Array<any>) =>
         changes.map(c =>
@@ -39,12 +42,16 @@ getmessage(){
       )
     ).subscribe(message =>{
       this.Allmessage =message
-console.log(this.Allmessage)
+console.log(this.Allmessage) 
     }); 
 }
 delete(key){
   this.messageService.deletemessage(key);
-  this.presentAlert('message Delete successfully')
+  this.presentAlert('message Deleted successfully')
+}
+DeleteAll(){
+  this.messageService.deleteAll();
+  this.presentAlert('All message Deleted successfully')
 }
  async presentAlert(title) {
   const alert = await this.alertController.create({

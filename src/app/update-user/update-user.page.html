@@ -20,5 +20,13 @@
           </ion-item> -->
           <ion-button (click)="updateUser(points)">update point</ion-button>
       </form>
+      <form>
+        <ion-item>
+          <ion-label>Expired Date:</ion-label>
+          <ion-input  type="date"  required name="time" [(ngModel)]="time"></ion-input>
+        </ion-item>
     
+        
+          <ion-button (click)="makeVIP(time)">Make Vip Account</ion-button>
+      </form>
 </ion-content>

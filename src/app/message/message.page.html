@@ -7,15 +7,29 @@
 <ion-content>
   <form>
     <ion-item>
-      <ion-label>header:</ion-label>
+      <ion-label>content:</ion-label>
       <ion-input type="text" required name="header" [(ngModel)]="header"></ion-input>
     </ion-item>
 
     <ion-item>
-        <ion-label>body:</ion-label>
+        <ion-label>Link:</ion-label>
         <ion-input type="text" required name="body" [(ngModel)]="body"></ion-input>
       </ion-item>
-      <ion-button (click)="creatmessage(header , body)">add</ion-button>
-  </form>
 
+
+  
+      <ion-button (click)="creatmessage(header , body )">add</ion-button>
+  </form>
+  <ion-card class="main" *ngFor="let message of Allmessage">
+    <label class="left">
+      content:   {{ message.header}} 
+      
+    </label> 
+    <label class="left">
+      Link:  {{ message.body}} 
+    </label>
+    
+    <ion-button (click)="delete(message.key)">delete</ion-button>
+  </ion-card>
+  <button class="deleteAll"(click)="DeleteAll()">Delete All</button>
 </ion-content>

@@ -16,9 +16,7 @@ export class Tab3Page {
  cash: number;
   constructor( public alertController: AlertController ,
     private offersService : OffersService,
-    private noti :NotificationsService
   ) {
-    this.noti.notifications('hiiii','hellllllllllo')
     this.getOffers()
   }
 
