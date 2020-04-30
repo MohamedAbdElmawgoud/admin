@@ -41,7 +41,7 @@ export class UserPage implements OnInit {
     
     //console.log('user is ',  e)
     this.users = [];
-    e.forEach(element => {
+    e.forEach((element : any ) => {
       if(element.photoURL == ''){
        element.photoURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5BdmOpYjhT8eCXbPFKrfK-4Jx0DHd-ihLDzSuE6tCi1dK1yUwfPOlwoJS&s=10'
       }
