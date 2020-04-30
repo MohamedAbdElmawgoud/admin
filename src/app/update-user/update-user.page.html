@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar color="tertiary">    
+        <ion-title>update user</ion-title>
+       <ion-buttons slot="start">
+         <ion-back-button></ion-back-button>
+       </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form>
+        <ion-item>
+          <ion-label>point:</ion-label>
+          <ion-input type="number" required name="points" [(ngModel)]="points"></ion-input>
+        </ion-item>
+    
+        <!-- <ion-item>
+            <ion-label>id:</ion-label>
+            <ion-input type="number" required name="cash" [(ngModel)]="id"></ion-input>
+          </ion-item> -->
+          <ion-button (click)="updateUser(points)">update point</ion-button>
+      </form>
+    
+</ion-content>

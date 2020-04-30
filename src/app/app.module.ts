@@ -16,7 +16,9 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { DatePipe } from '@angular/common';
+import { AngularFireMessagingModule } from '@angular/fire/messaging';
 
+import { MessagingService } from './service/messaging.service';
 export const config = {
   apiKey: "AIzaSyDazhWMFHM2GRAjs8SYSSL8GrpqWZDdHAs",
   authDomain: "fog-tube.firebaseapp.com",
@@ -36,12 +38,14 @@ export const config = {
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     AngularFireDatabaseModule, 
+    AngularFireMessagingModule,    
     HttpClientModule,
     AppRoutingModule],
   providers: [
     StatusBar,
     SplashScreen,
     DatePipe,
+    MessagingService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
