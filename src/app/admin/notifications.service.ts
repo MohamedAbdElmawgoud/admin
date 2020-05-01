@@ -41,7 +41,7 @@ export class NotificationsService {
           "body": content,
           
 
-        },
+        },  
         'registration_ids': this.tockens
 
       }
