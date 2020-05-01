@@ -54,6 +54,9 @@ status = true;
              this.usersComp.push(e.docs[0].data())
             // console.log('user',this.usersComp)
              element.photoURL = e.docs[0].data().photoURL
+             if (element.photoURL ==''){
+               element.photoURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5BdmOpYjhT8eCXbPFKrfK-4Jx0DHd-ihLDzSuE6tCi1dK1yUwfPOlwoJS&s=10'
+             }
             })
            
          });
