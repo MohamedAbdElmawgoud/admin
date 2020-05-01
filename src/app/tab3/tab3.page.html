@@ -13,12 +13,12 @@
   <form>
     <ion-item>
       <ion-label>point:</ion-label>
-      <ion-input type="number" required name="points" [(ngModel)]="points"></ion-input>
+      <ion-input type="number" required name="points" [(ngModel)]="points" id="points"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label>cash:</ion-label>
-        <ion-input type="number" required name="cash" [(ngModel)]="cash"></ion-input>
+        <ion-input type="number" required name="cash" [(ngModel)]="cash"  id="cash"></ion-input>
       </ion-item>
       <ion-button (click)="creatOffer(points , cash)">add</ion-button>
   </form>

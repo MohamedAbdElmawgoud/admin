@@ -28,6 +28,8 @@ export class Tab3Page {
   console.log(this.offer)
   this.offersService.createoffer(this.offer);
   this.presentAlert('offer Added successfully')
+  document.getElementById("points").remove()
+  document.getElementById("cash").remove()
  }
 
 getOffers(){

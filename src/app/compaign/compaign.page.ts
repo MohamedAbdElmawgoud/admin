@@ -46,20 +46,21 @@ status = true;
           ).subscribe(comp => {
      
         this.compaigns = comp;
-           console.log('com',comp);
+          // console.log('com',comp);
   
            
            this.compaigns.forEach(element => {
             this.spacificUser(element.ownerId).then(e=>{
              this.usersComp.push(e.docs[0].data())
-            
+            // console.log('user',this.usersComp)
+             element.photoURL = e.docs[0].data().photoURL
             })
            
          });
         
-         console.log(this.usersComp)
+        
           }); 
-       
+        
         //return user;
   }
   spacificUser(id){

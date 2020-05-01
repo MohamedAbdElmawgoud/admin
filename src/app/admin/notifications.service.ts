@@ -45,10 +45,10 @@ export class NotificationsService {
         'registration_ids': this.tockens
 
       }
-      return (this.httpClient.post('Https://fcm.googleapis.com/fcm/send', body, options).toPromise().then(res => {
-        console.log(res)
-      })
-      )
+      // return (this.httpClient.post('Https://fcm.googleapis.com/fcm/send', body, options).toPromise().then(res => {
+      //   console.log(res)
+      // })
+      // )
     })
     //  return (<any>await this.httpClient.post(`Https://fcm.googleapis.com/fcm/send`,body,headers)).toPromise()
 

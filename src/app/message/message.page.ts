@@ -30,6 +30,9 @@ export class MessagePage  {
   this.messageService.createmessage(this.message);
   this.noti.notifications(header,body);
   this.presentAlert('message Added successfully')
+  document.getElementById("header").remove()
+  document.getElementById("body").remove()
+  
  }
 
 getmessage(){
