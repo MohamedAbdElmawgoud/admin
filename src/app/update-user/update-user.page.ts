@@ -9,6 +9,7 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./update-user.page.scss'],
 })
 export class UpdateUserPage implements OnInit {
+  expiredDate: any;
   data: any;
   id: any;
 points: number;
@@ -33,7 +34,7 @@ block =false;
     user = e.docs[0].data() 
     this.block = user.block 
     console.log('user',user)
-   
+   this.expiredDate = user.vip.expired;
   })
 } 
   
@@ -63,6 +64,7 @@ block =false;
   }
 makeVIP(expiredData){
   let user ;
+  this.expiredDate = expiredData
   // console.log(this.id)
    this.admin.getDataOfUser(this.id).then(e=>{
 

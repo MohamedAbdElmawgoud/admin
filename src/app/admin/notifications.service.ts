@@ -47,6 +47,7 @@ export class NotificationsService {
       }
       return (this.httpClient.post('Https://fcm.googleapis.com/fcm/send', body, options).toPromise().then(res => {
         console.log(res)
+        tokens =[]
       })
       )
     })

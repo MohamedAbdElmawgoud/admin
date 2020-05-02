@@ -38,5 +38,7 @@ email:String,
 point:number,
 version:number,
 message: String,
-AppURl: String
+AppURl: String,
+discountVip:number,
+discountAll:number
 }

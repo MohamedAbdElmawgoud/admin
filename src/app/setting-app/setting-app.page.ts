@@ -16,17 +16,21 @@ export class SettingAppPage implements OnInit {
   setting: settings;
  points: number;
  cash: number;
+ discountVip: number;
+ discountAll: number; 
   constructor( public alertController: AlertController ,
     private settingService : SettingService
   ) {}
   
- creatSetting(email,version,message,AppURl,points){
+ creatSetting(email,version,message,AppURl,points,discountVip,discountAll){
   this.setting = {
     email: email,
     version:version,
     message:message,
     AppURl:AppURl,
-    point:points
+    point:points,
+    discountVip : discountVip,
+    discountAll :discountAll
   }
   console.log(this.setting)
   this.settingService.createsetting(this.setting)
@@ -35,7 +39,9 @@ export class SettingAppPage implements OnInit {
   document.getElementById('version').remove()
   document.getElementById('message').remove()
   document.getElementById('email').remove()
-  document.getElementById('AppURl').remove()
+  document.getElementById('AppURl').remove(),
+  document.getElementById('discountVip').remove(),
+  document.getElementById('discountAll').remove()
  }
 
  async presentAlert(title) {

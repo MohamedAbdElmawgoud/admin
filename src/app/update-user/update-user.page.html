@@ -31,4 +31,8 @@
       </form>
       <button *ngIf="!block" class="block"(click)= "blockUser(id)">Block</button>
       <button *ngIf="block" class="unblock"(click)= "unblockUser(id)">Un block</button>
+      <ion-card style="margin: 5%;height: 10%">
+        <br>
+      <ion-label *ngIf="expiredDate" style="margin-left: 10px">Vip Expired at : {{expiredDate}}</ion-label>
+      </ion-card>
 </ion-content>

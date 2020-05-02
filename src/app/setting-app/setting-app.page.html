@@ -31,6 +31,17 @@
                     <ion-label>Application URl:</ion-label>
                     <ion-input type="text" required name="AppURl" [(ngModel)]="AppURl" id="AppURl"></ion-input>
                   </ion-item>
-          <ion-button (click)="creatSetting(email,version,message,AppURl,points)">add</ion-button>
+
+                  <ion-item>
+                    <ion-label>Discount Vip:</ion-label>
+                    <ion-input type="number" required name="discountVip" [(ngModel)]="discountVip" id="discountVip"></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                      <ion-label>Discount For all:</ion-label>
+                      <ion-input type="number" required name="discountAll" [(ngModel)]="discountAll" id="discountAll"></ion-input>
+                    </ion-item>
+
+          <ion-button (click)="creatSetting(email,version,message,AppURl,points,discountVip,discountAll)">add</ion-button>
       </form>
 </ion-content>
