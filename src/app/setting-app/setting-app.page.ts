@@ -30,7 +30,12 @@ export class SettingAppPage implements OnInit {
   }
   console.log(this.setting)
   this.settingService.createsetting(this.setting)
-  this.presentAlert('setting Added successfully')
+  this.presentAlert('setting Added successfully')    
+  document.getElementById('points').remove()
+  document.getElementById('version').remove()
+  document.getElementById('message').remove()
+  document.getElementById('email').remove()
+  document.getElementById('AppURl').remove()
  }
 
  async presentAlert(title) {

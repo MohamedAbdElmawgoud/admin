@@ -13,6 +13,8 @@ export class UpdateUserPage implements OnInit {
   id: any;
 points: number;
 time: any;
+block =false;
+
   constructor( 
     public alertController: AlertController ,
     private admin :AdminService,
@@ -26,13 +28,14 @@ time: any;
       this.id = v.get('id');
     //console.log(this.id)
     });
+    let user ;
+  this.admin.getDataOfUser(this.id).then(e=>{
+    user = e.docs[0].data() 
+    this.block = user.block 
+    console.log('user',user)
    
-    // .queryParamMap
-    // .subscribe(v => {
-    //   this.id = v.get('data');
-    //  console.log(this.id)
-    // });
-}
+  })
+} 
   
   updateUser(point){
     let user ;
@@ -73,5 +76,34 @@ makeVIP(expiredData){
       this.admin.updateUser(user);
       this.presentAlert('This account will be VIP until  '+ expiredData)
    }) 
+}
+
+blockUser(id){
+  let user;
+  this.admin.getDataOfUser(id).then(e=>{
+    
+         // console.log(e)
+           user = e.docs[0].data() 
+           user.block = true;
+           console.log('afda',user)
+           this.admin.updateUser(user);
+           this.presentAlert('user blocked successful')
+           this.block =true
+        }) 
+  
+}
+unblockUser(id){
+  let user;
+  this.admin.getDataOfUser(id).then(e=>{
+    
+         // console.log(e)
+           user = e.docs[0].data() 
+           user.block = false;
+           console.log('afda',user)
+           this.admin.updateUser(user);
+           this.presentAlert('user un blocked successful')
+           this.block =false
+        }) 
+  
 }
 }

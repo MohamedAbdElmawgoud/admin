@@ -57,6 +57,9 @@ status = true;
              if (element.photoURL ==''){
                element.photoURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5BdmOpYjhT8eCXbPFKrfK-4Jx0DHd-ihLDzSuE6tCi1dK1yUwfPOlwoJS&s=10'
              }
+             if(element.displayName== '' || !element.displayName){
+              element.displayName= e.docs[0].data().displayName
+             }
             })
            
          });
