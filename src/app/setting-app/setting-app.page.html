@@ -8,40 +8,40 @@
     <form>
         <ion-item>
           <ion-label>Reward point:</ion-label>
-          <ion-input type="number" required name="points" [(ngModel)]="points" id="points"></ion-input>
+          <ion-input type="number" required name="points" value={{lastpoints}} [(ngModel)]="points" id="points"></ion-input>
         </ion-item>
     
         <ion-item>
             <ion-label>version:</ion-label>
-            <ion-input type="number" required name="version" [(ngModel)]="version" id="version"></ion-input>
+            <ion-input type="number" required name="version" value={{lastVersion}} [(ngModel)]="version" id="version"></ion-input>
           </ion-item>
 
           <ion-item>
               <ion-label>message for update:</ion-label>
-              <ion-input type="text" required name="message" [(ngModel)]="message" id="message"></ion-input>
+              <ion-input type="text" required name="message" value={{lastmessage}} [(ngModel)]="message" id="message"></ion-input>
             </ion-item>
         
             <ion-item>
                 <ion-label>email:</ion-label>
-                <ion-input type="email" required name="email" [(ngModel)]="email" id="email"></ion-input>
+                <ion-input type="email" required name="email" value={{lastEmail}} [(ngModel)]="email" id="email"></ion-input>
               </ion-item>
           
             
                 <ion-item>
                     <ion-label>Application URl:</ion-label>
-                    <ion-input type="text" required name="AppURl" [(ngModel)]="AppURl" id="AppURl"></ion-input>
+                    <ion-input type="text" required name="AppURl" value={{lasturl}}  [(ngModel)]="AppURl" id="AppURl"></ion-input>
                   </ion-item>
 
                   <ion-item>
                     <ion-label>Discount Vip:</ion-label>
-                    <ion-input type="number" required name="discountVip" [(ngModel)]="discountVip" id="discountVip"></ion-input>
+                    <ion-input type="number" required name="discountVip" value={{lastdiscountVip}} [(ngModel)]="discountVip" id="discountVip"></ion-input>
                   </ion-item>
 
                   <ion-item>
                       <ion-label>Discount For all:</ion-label>
-                      <ion-input type="number" required name="discountAll" [(ngModel)]="discountAll" id="discountAll"></ion-input>
+                      <ion-input type="number" required name="discountAll" value={{lastdiscountAll}} [(ngModel)]="discountAll" id="discountAll"></ion-input>
                     </ion-item>
 
-          <ion-button (click)="creatSetting(email,version,message,AppURl,points,discountVip,discountAll)">add</ion-button>
+          <ion-button (click)="creatSetting(email,version,message,AppURl,points,discountVip,discountAll)">save</ion-button>
       </form>
 </ion-content>

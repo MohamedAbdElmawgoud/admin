@@ -34,11 +34,11 @@ export class SettingService {
 }
 
 export interface settings{
-email:String,
+email:string,
 point:number,
-version:number,
-message: String,
-AppURl: String,
+version:string,
+message: string,
+AppURl: string,
 discountVip:number,
 discountAll:number
 }

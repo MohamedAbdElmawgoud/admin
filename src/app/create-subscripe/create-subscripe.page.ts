@@ -99,7 +99,8 @@ export class CreateSubscripePage implements OnInit {
       point: this.points,
       channel: this.userChannel,
       createdData: Date.now(),
-      ownerId: user.uid
+      ownerId: user.uid,
+      type :'sub'
     }
    // this.UpdateUSerPoints(-this.points)
 

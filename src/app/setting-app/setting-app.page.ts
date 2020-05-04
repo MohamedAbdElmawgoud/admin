@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { SettingService , settings } from "../admin/setting.service";
 import { AlertController } from "@ionic/angular";
+import { map } from "rxjs/operators";
 @Component({
   selector: 'app-setting-app',
   templateUrl: './setting-app.page.html',
@@ -10,18 +11,51 @@ import { AlertController } from "@ionic/angular";
 export class SettingAppPage implements OnInit {
 
 
-  ngOnInit() {
-  }
+ 
   AllSetting=[];
   setting: settings;
  points: number;
- cash: number;
+
  discountVip: number;
  discountAll: number; 
+
+
+ lastSettinig: settings;
+ lastpoints: number;
+ 
+ lastdiscountVip: number;
+ lastdiscountAll: number; 
+ lasturl:string;
+ lastEmail:string;
+ lastmessage:string
+ lastVersion:string
   constructor( public alertController: AlertController ,
     private settingService : SettingService
-  ) {}
+  ) {
+    
+  }
   
+  ngOnInit() {
+    this.settingService.getsettingsList((res => 
+      res)).snapshotChanges().pipe(
+        map((changes: Array<any>) =>
+          changes.map(c =>
+            ({ key: c.payload.key, ...c.payload.val() })
+          )
+        )
+      ).subscribe(  res =>{
+  this.lastSettinig =res[res.length-1]
+  this.lastpoints =  this.lastSettinig.point;
+  this.lastdiscountVip = this.lastSettinig.discountVip;
+  this.lastdiscountAll = this.lastSettinig.discountAll;
+  this.lasturl = this.lastSettinig.AppURl;
+  this.lastEmail = this.lastSettinig.email;
+  this.lastmessage = this.lastSettinig.message;
+  this.lastVersion = this.lastSettinig.version;
+
+  console.log(this.lastSettinig)
+      })
+    }
  creatSetting(email,version,message,AppURl,points,discountVip,discountAll){
   this.setting = {
     email: email,

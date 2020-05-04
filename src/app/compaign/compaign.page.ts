@@ -34,7 +34,15 @@ status = true;
   
     let done =0;
     
-      
+    this.campingsService.getSubscribesList((res => 
+      res
+    )).snapshotChanges().pipe(
+        map((changes: Array<any>) =>
+          changes.map(c =>
+            ({ key: c.payload.key, ...c.payload.val() })
+          )
+        )
+      ).subscribe(sub => {
          let compaign= this.campingsService.getcampingsList((res => 
           res.orderByChild('type')
         )).snapshotChanges().pipe(
@@ -46,9 +54,12 @@ status = true;
           ).subscribe(comp => {
      
         this.compaigns = comp;
+        sub.forEach(element => {
+          this.compaigns.push(element)
+        });
           // console.log('com',comp);
-  
-           
+        
+        console.log('com',this.compaigns)
            this.compaigns.forEach(element => {
             this.spacificUser(element.ownerId).then(e=>{
              this.usersComp.push(e.docs[0].data())
@@ -61,7 +72,7 @@ status = true;
               element.displayName= e.docs[0].data().displayName
              }
             })
-           
+          }); 
          });
         
         

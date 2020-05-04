@@ -45,9 +45,19 @@ getCompinge(){
   
   let done =0;
   
-    
+    this.campingsService.getSubscribesList((res => 
+      res
+    )).snapshotChanges().pipe(
+        map((changes: Array<any>) =>
+          changes.map(c =>
+            ({ key: c.payload.key, ...c.payload.val() })
+          )
+        )
+      ).subscribe(sub => {
+//  console.log('sub',sub)
+     
        let compaign= this.campingsService.getcampingsList((res => 
-        res.orderByChild('type')
+        res
       )).snapshotChanges().pipe(
           map((changes: Array<any>) =>
             changes.map(c =>
@@ -55,20 +65,10 @@ getCompinge(){
             )
           )
         ).subscribe(comp => {
-      this.compaignLength(comp.length)
-      // this.compaigns = comp;
-      //    console.log('com',comp);
-
-         
-      //    this.compaigns.forEach(element => {
-      //     this.spacificUser(element.ownerId).then(e=>{
-      //      this.usersComp.push(e.docs[0].data())
-          
-      //     })
-         
-      //  });
+      this.compaignLength(comp.length + sub.length)
+     
       
-       console.log(this.usersComp)
+    });
         }); 
      
       //return user;

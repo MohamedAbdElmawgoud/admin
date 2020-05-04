@@ -8,7 +8,7 @@ export class CompingsService {
  
 
 public dbPath = '/campings';
-
+public dbPath2 ='/subscribes'
  campingsRef: AngularFireList<camping> = null;
 
  constructor(private db: AngularFireDatabase) {
@@ -33,6 +33,12 @@ public dbPath = '/campings';
    return this.db.list(this.dbPath , query);
    
  }
+ getSubscribesList(query ): AngularFireList<camping> {
+  
+  return this.db.list(this.dbPath2 , query);
+  
+}
+
  getAllCampings() : AngularFireList<camping>{
   return this.db.list(this.dbPath);
  }
