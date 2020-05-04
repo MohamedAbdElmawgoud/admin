@@ -25,7 +25,7 @@ export class NotificationsService {
       e.forEach((element: any) => {
         if (element.token) {
           this.tockens.push(element.token)
-        }
+        }  
       });
       let tokens = this.tockens
       this.tockens = []
