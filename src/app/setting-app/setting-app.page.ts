@@ -52,7 +52,7 @@ export class SettingAppPage implements OnInit {
   this.lastEmail = this.lastSettinig.email;
   this.lastmessage = this.lastSettinig.message;
   this.lastVersion = this.lastSettinig.version;
-
+ 
   console.log(this.lastSettinig)
       })
     }
