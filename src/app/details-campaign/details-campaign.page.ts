@@ -88,6 +88,7 @@ export class DetailsCampaignPage implements OnInit {
     
     this.presentAlert('compaign deleted')
    this.router.navigate([''])
+   
   }
 
   getUser(id) {

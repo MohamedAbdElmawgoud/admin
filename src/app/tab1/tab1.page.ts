@@ -24,8 +24,9 @@ export class Tab1Page {
    
   }
 
-  ngOnInit(){
+  ionViewWillEnter() {
     this.getCompinge()
+  
   }
 async createCompinge() {
   const alert = await this.alertController.create({
