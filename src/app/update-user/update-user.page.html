@@ -28,6 +28,7 @@
     
         
           <ion-button (click)="makeVIP(time)">Make Vip Account</ion-button>
+          <ion-button (click)="deleteVIP()">disable Vip Account</ion-button>
       </form>
       <button *ngIf="!block" class="block"(click)= "blockUser(id)">Block</button>
       <button *ngIf="block" class="unblock"(click)= "unblockUser(id)">Un block</button>

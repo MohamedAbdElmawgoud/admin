@@ -21,10 +21,12 @@ export class Tab1Page {
     private campingsService: CompingsService,
     public alertController: AlertController ,
   ) {
-    this.getCompinge()
+   
   }
 
-
+  ngOnInit(){
+    this.getCompinge()
+  }
 async createCompinge() {
   const alert = await this.alertController.create({
     header: 'select the camping type',

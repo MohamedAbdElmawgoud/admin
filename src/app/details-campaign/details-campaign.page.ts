@@ -83,7 +83,8 @@ export class DetailsCampaignPage implements OnInit {
   }
    
   deleteComp(){
-    this.campingsService.deletecamping(this.campId)
+   
+    this.campingsService.deletecamping(this.key)
     
     this.presentAlert('compaign deleted')
    this.router.navigate([''])

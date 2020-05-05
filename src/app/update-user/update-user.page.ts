@@ -80,6 +80,23 @@ makeVIP(expiredData){
    }) 
 }
 
+deleteVIP(){
+  let user ;
+ 
+  // console.log(this.id)
+   this.admin.getDataOfUser(this.id).then(e=>{
+
+    // console.log(e)
+      user = e.docs[0].data() 
+      user.vip = {
+        status : false,
+       
+      };
+      console.log('afda',user)
+      this.admin.updateUser(user);
+      this.presentAlert('This account disable VIP ')
+   }) 
+}
 blockUser(id){
   let user;
   this.admin.getDataOfUser(id).then(e=>{
