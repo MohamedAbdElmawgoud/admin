@@ -74,8 +74,8 @@ export class DetailsCampaignPage implements OnInit {
            let user =  await this.getUser(ele)
            this.viewers.push(user.docs[0].data())
            this.viewers.forEach(element => {
-             if (element.photoURL == '')
-              element.photoURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5BdmOpYjhT8eCXbPFKrfK-4Jx0DHd-ihLDzSuE6tCi1dK1yUwfPOlwoJS&s=10'
+             if (element.photoURL == '' || ! element.photoUrl == null )
+              element.photoURL = 'https://fogtube.store/profile.svg'
            });
            this.done = this.compInfo.done.length
           })
@@ -88,6 +88,10 @@ export class DetailsCampaignPage implements OnInit {
     
     this.presentAlert('compaign deleted')
    this.router.navigate([''])
+   setTimeout(() => {
+    window.location.reload()
+ }, 500);
+  
    
   }
 

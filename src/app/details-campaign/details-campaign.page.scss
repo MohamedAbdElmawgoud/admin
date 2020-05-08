@@ -1,69 +1,74 @@
 
 img{
-    width: 50px;
-    height: 50px;
-  //  display: inline;
-    float: left;
-    border-radius: 50%;
-    //margin-right:80%;
-    margin: 5%;
- // margin-left: 5%;
- 
+  width: 60px;
+  height: 60px;
+//  display: inline;
+  // float: left;
+  border-radius: 50%;
+  //margin-right:80%;
+margin-left: 5%;
+margin-top: 5%;
+  
 }
 hr {
-    border-top: 4px solid #1C8646;
-    width: 90%;
-    margin-right: 5%;
+  border-top: 4px solid #1C8646;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+}
+.mark{
+  color: #2BC568;
+  font-size: 12px;
+  margin-top: 12%;
+//  margin-right: 10%
+}
+h3 , h2{
+  //  margin-top: -10%;
     margin-left: 5%;
-  }
-  .mark{
-    color: #2BC568;
+    margin-right: 5%;
     font-size: 12px;
-    margin-top: 12%;
-  //  margin-right: 10%
-  }
-  h3 , h2{
-    //  margin-top: -10%;
-      margin-left: 5%;
-      margin-right: 5%;
-      font-size: 12px;
-  }
-  p{
-    margin-left: 5%;
-   // margin-right: 5%;
-    font-size: 15px;
-  }
-  h2{
-    margin-top: -10%;
-  }
-  h4{
-     // display: inline;
-    //   margin-left: 10%; 
-     //  margin-right: 10%;           
-     font-size: 15px;
-      //width: 100%
-  }
-  
-  div {
-    display: flex;
-    flex-direction: row-reverse;
-   margin-right: 20%;
-    margin-left: 5%;
-   // width: 80%;
-   float: left;
-  }
-  h5{
-      margin: 5%;
-  }
+}
+p{
+  margin-left: 5%;
+ // margin-right: 5%;
+  font-size: 15px;
+}
+h2{
+  margin-top: -10%;
+}
+h4{
+   // display: inline;
+    margin-left:  10px; 
+    margin-right: 10px;           
+   font-size: 15px;
+   margin-top: 10%;
+   
+}
 
-  button{
-    text-transform: uppercase;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
-    color: black;
-    padding: 10px;
+div {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: flex-end;
+
+//  margin-right: 20%;
+//   margin-left: 5%;
+ // width: 80%;
+//  float: left;
+}
+h5{
+    margin: 5%;
+}
+
+button{
+  text-transform: uppercase;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  color: black;
+  padding: 10px;
+  margin: 5%;
 }
 strong{
-  float: right;
+float: right;
 }

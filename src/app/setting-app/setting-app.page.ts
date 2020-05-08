@@ -53,7 +53,7 @@ export class SettingAppPage implements OnInit {
   this.lastmessage = this.lastSettinig.message;
   this.lastVersion = this.lastSettinig.version;
  
-  console.log(this.lastSettinig)
+  console.log(this.lastSettinig) 
       })
     }
  creatSetting(email,version,message,AppURl,points,discountVip,discountAll){
