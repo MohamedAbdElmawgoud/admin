@@ -81,7 +81,7 @@ getCompinge(){
       this.usersid.push(element.payload.doc.id) 
      
     });
-    console.log('ids', this.usersid)
+   // console.log('ids', this.usersid)
    })
 
 

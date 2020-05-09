@@ -91,7 +91,7 @@ deleteVIP(){
       user.vip = {
         status : false,
        
-      };
+      }; 
       console.log('afda',user)
       this.admin.updateUser(user);
       this.presentAlert('This account disable VIP ')

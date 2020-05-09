@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { DatePipe } from '@angular/common';
 import { AngularFireMessagingModule } from '@angular/fire/messaging';
+import { IonicStorageModule } from "@ionic/storage";
 
 import { MessagingService } from './service/messaging.service';
 export const config = {
@@ -38,7 +39,8 @@ export const config = {
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     AngularFireDatabaseModule, 
-    AngularFireMessagingModule,    
+    AngularFireMessagingModule,  
+    IonicStorageModule.forRoot(),
     HttpClientModule,
     AppRoutingModule],
   providers: [

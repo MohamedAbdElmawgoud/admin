@@ -15,22 +15,36 @@
   </div> -->
   
   
-  <div *ngIf="compaign"> 
+  <div > 
 <ion-card  *ngFor="let data of compaignValue; index as i" >
   <ion-card-title (click)="getDetailsOfComp(data)">
       
-    <img src="assets\icon\play.png" >
+    <img src="{{data.image}}" >
     <p class="view" style="display:flex">
        
-       <strong> {{data.view}}/{{view[i]}} </strong> <strong>view</strong>
+       <strong> {{data.viewStat}} </strong> <strong>view</strong>
         <ion-icon name="checkmark-circle" class="mark"></ion-icon> 
        </p>
       
        <hr>
 </ion-card-title>
 </ion-card>
+
+<ion-card *ngFor="let data of compaignView; index as i">
+  <ion-card-title (click)="getDetailsOfComp(data)">
+
+    <img src="{{data.image}}" >
+    <p class="view" style="display:flex">
+
+       <strong> {{data.viewStat}} </strong> <strong>view</strong>
+        <ion-icon name="checkmark-circle" class="mark"></ion-icon> 
+       </p>
+
+     <hr>
+  </ion-card-title>
+  </ion-card>
   </div>
-  <div *ngIf="!compaign">
+  <div *ngIf="!compaignValue[0]">
   <ion-icon name="home" class="icon"></ion-icon>
     <p>There is no campaign</p>
   

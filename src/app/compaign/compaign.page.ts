@@ -3,6 +3,8 @@ import { CompingsService } from "src/app/admin/compings.service";
 import { AlertController } from "@ionic/angular";
 import { map } from "rxjs/internal/operators/map";
 import { AdminService } from '../admin/admin.service';
+import { subscribesService } from "src/app/admin/subscripe";
+
 @Component({
   selector: 'app-compaign',
   templateUrl: './compaign.page.html',
@@ -23,6 +25,7 @@ status = true;
   constructor(
     private campingsService: CompingsService,
     public alertController: AlertController ,
+    private subscribes: subscribesService,    
     private admin :AdminService
   ) { }
 
@@ -59,14 +62,14 @@ status = true;
         });
           // console.log('com',comp);
         
-        console.log('com',this.compaigns)
+      //  console.log('com',this.compaigns)
            this.compaigns.forEach(element => {
             this.spacificUser(element.ownerId).then(e=>{
              this.usersComp.push(e.docs[0].data())
             // console.log('user',this.usersComp)
              element.photoURL = e.docs[0].data().photoURL
              if (element.photoURL ==''){
-               element.photoURL = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5BdmOpYjhT8eCXbPFKrfK-4Jx0DHd-ihLDzSuE6tCi1dK1yUwfPOlwoJS&s=10'
+               element.photoURL = 'https://fogtube.store/profile.svg'
              }
              if(element.displayName== '' || !element.displayName){
               element.displayName= e.docs[0].data().displayName
@@ -85,10 +88,47 @@ status = true;
     
      }
   
-  deleteCompaign(data){
-    
-    this.campingsService.deletecamping(data);
-    this.presentAlert('Compaign Deleted')
+  deleteCompaign(key){
+   // console.log('data',key)
+    this.campingsService.getcampingsList((res => 
+      res.orderByChild('type')
+      .equalTo('view'))).snapshotChanges().pipe(
+        map((changes: Array<any>) =>
+          changes.map(c =>
+            ({ key: c.payload.key, ...c.payload.val() })
+          )
+        )
+      ).subscribe(comp => {
+        this.campingsService.deletecamping(key)
+      })
+
+
+
+      this.subscribes.getsubscribesList((res => 
+        res.orderByChild('type')
+        .equalTo('sub' || 'subscribe'|| null))).snapshotChanges().pipe(
+          map((changes: Array<any>) =>
+            changes.map(c =>
+              ({ key: c.payload.key, ...c.payload.val() })
+            )
+          )
+        ).subscribe(comp => {
+          this.subscribes.deleteSubscripe(key)
+        })
+  
+
+
+    // if(this.type == 'subscribe'){
+    //   this.subscribes.deleteSubscripe(this.campId)
+      
+    // }else{
+    //   this.campingsService.deletecamping(this.campId)
+
+    // }
+    // let text = 'compaign deleted'
+    // this.presentAlert(text)
+    // this.router.navigate([''])
+  
   }
   async presentAlert(title) {
     const alert = await this.alertController.create({

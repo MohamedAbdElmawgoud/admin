@@ -4,6 +4,7 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Details Campaign
+   
   </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -31,7 +32,8 @@
 
     <h4> {{user.displayName}}
     </h4>
-    <img src={{user.photoURL}}>
+    <img src="{{user.photoURL || 'https://fogtube.store/profile.svg'}}">
+
   </div>
 
 

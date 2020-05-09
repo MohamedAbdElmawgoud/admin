@@ -4,6 +4,7 @@ import { AdminService } from "../admin/admin.service";
 import { CompingsService } from "src/app/admin/compings.service";
 import { AlertController } from "@ionic/angular";
 import { map } from 'rxjs/operators';
+import { subscribesService } from "src/app/admin/subscripe";
 
 @Component({
   selector: 'app-tab1',
@@ -11,12 +12,14 @@ import { map } from 'rxjs/operators';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  compaignValue: any[];
+  compaignView: {};
+  compaignValue = [];  
   compaign=false;
   done=[];
   view=[];
 
   constructor(
+    private subscribes: subscribesService,    
     public router: Router,
     private campingsService: CompingsService,
     public alertController: AlertController ,
@@ -80,40 +83,65 @@ async createCompinge() {
  
   
 }
-getCompinge(){
-  this.compaignValue = []
-  let done =0;
+getCompinge() {
+  
+   let done = 0;
+   
     
-       let compaign= this.campingsService.getcampingsList((res => 
-        res.orderByChild('ownerId')
-        .equalTo('admin'))).snapshotChanges().pipe(
-          map((changes: Array<any>) =>
-            changes.map(c =>
-              ({ key: c.payload.key, ...c.payload.val() })
-            )
-          )
-        ).subscribe(comp => {
-      this.compaignValue = comp
-        comp.forEach(element => {
-         
-          this.done=element.done? element.done.length : 0
-          this.view.push(this.done);
-        // this.createdDate.push(element.createdData) 
-       this.compaign =true;   
-        });
-         // console.log(comp);
-       
-         console.log('compaignValue is', this.compaignValue )
-        });
+      
+
+       this.subscribes.getsubscribesList((res =>
+         res.orderByChild('ownerId')
+           .equalTo('admin'))).snapshotChanges().pipe(
+             map((changes: Array<any>) =>
+               changes.map(c =>
+                 ({ key: c.payload.key, ...c.payload.val() })
+               )
+             )
+           ).subscribe(subscribes => {
+             this.compaignValue =[]              
+             subscribes.forEach(ele => {
+
+               let views = `${ele.view}/${ele.done ? ele.done.length : 0}`
+               ele['viewStat'] = views;
+               ele['type'] = 'subscribe'
+               ele['image'] = ele.channel.channel.thumbnails.default.url;
+
+               this.compaignValue.push(ele)
+
+             })
+             console.log(this.compaignValue);
+
+           });
+
+           this.campingsService.getcampingsList((res =>
+             res.orderByChild('ownerId')
+               .equalTo('admin'))).snapshotChanges().pipe(
+                 map((changes: Array<any>) =>
+                   changes.map(c =>
+                     ({ key: c.payload.key, ...c.payload.val() })
+                   )
+                 )
+               ).subscribe(comp => {
+                 this.compaignView =[]
+                 comp.forEach(ele => {
+                   let views = `${ele.view}/${ele.done ? ele.done.length : 0}`
+                   ele['viewStat'] = views;
+                   this.compaignView.push(ele)
+
+                 })
+                 console.log('compaignView is', this.compaignView)
+               });
+
      
-      //return user;
-  
-  
-} 
+     //return user;
+              }
+
+
 
 getDetailsOfComp(data ){
  // console.log(data.createdData)
-  this.router.navigate(['details-campaign'] , {queryParams : { data: data.createdData } });
+ this.router.navigate(['details-campaign'], { queryParams: { data: data.key , type : data.type  } });
 }
 
 }

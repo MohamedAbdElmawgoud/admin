@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CompingsService, camping } from "src/app/admin/compings.service";
+import { CompingsService } from "src/app/admin/compings.service";
 import { map } from "rxjs/operators";
-import { AdminService } from "../admin/admin.service";
+import { AdminService } from "src/app/admin/admin.service";
 import { AlertController } from '@ionic/angular';
-
+import { Storage } from '@ionic/storage';
+import { subscribesService } from '../admin/subscripe';
 
 @Component({
   selector: 'app-details-campaign',
@@ -13,7 +14,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class DetailsCampaignPage implements OnInit {
   user: any;
-  
+  showPoint: any;
   key: any;
   done: any;
   view: any;
@@ -25,84 +26,135 @@ export class DetailsCampaignPage implements OnInit {
   displayName = 'Nader Medhat';
   viewers = [];
   campId;
+  type;
   constructor(
-  
+    private firebase: AdminService,
     private router: Router,
-    private alertController: AlertController,  
-    private campingsService: CompingsService,
-    private route: ActivatedRoute, 
-    private admin :AdminService
-    ) { }
 
- async ngOnInit() {
-  
-    
+    private alertController: AlertController,
+    private campingsService: CompingsService,
+    private route: ActivatedRoute,
+    private subscribes: subscribesService,
+    private storage: Storage) { }
+
+  async ngOnInit() {
+    this.user = await this.storage.get('User');
+    this.getPoint()
     this.data = this.route
       .queryParamMap
       .subscribe(v => {
         this.campId = v.get('data');
-        this.getCompain(v.get('data'))
+        console.log(v.get('data'));
+        this.type = v.get('type')
+        
+        this.getCompain(v.get('data') ,  v.get('type'))
 
       });
   }
 
-  
-  getCompain(createdData) {
-    console.log(createdData)
-    this.campingsService.getcampingsList((res =>
-      res.orderByChild('ownerId')
-        .equalTo('admin'))).snapshotChanges().pipe(
-          map((changes: Array<any>) =>
-            changes.map(c =>
-              ({ key: c.payload.key, ...c.payload.val() })
-            ) 
-          )
-        ).subscribe(comp => {
-       comp.forEach(element => {
-         if(element.createdData == createdData){
-           this.compInfo = element
-         }
-       });
-        console.log('cscsc', this.compInfo)
-         
-       this.getUser(this.compInfo.ownerId)
-        
-        this.compdata = this.compInfo.createdData;
-       this.key = this.compInfo.key
-        this.view = this.compInfo.view
-        this.compInfo.done.forEach( async (ele) => {
-           let user =  await this.getUser(ele)
-           this.viewers.push(user.docs[0].data())
-           this.viewers.forEach(element => {
-             if (element.photoURL == '' || ! element.photoUrl == null )
-              element.photoURL = 'https://fogtube.store/profile.svg'
-           });
-           this.done = this.compInfo.done.length
-          })
-        });
+  getPoint() {
+    this.firebase.getDataOfUser("admin").then(point => {
+      this.showPoint = point.docs[0].data().point
+    })
+    return this.showPoint
   }
-   
-  deleteComp(){
-   
-    this.campingsService.deletecamping(this.key)
-    
-    this.presentAlert('compaign deleted')
-   this.router.navigate([''])
-   setTimeout(() => {
-    window.location.reload()
- }, 500);
+  getCompain(createdata , type) {
+    if(type == 'subscribe'){
+      this.subscribes.getsubscribesList((res =>
+        res.orderByChild('key')
+          )).snapshotChanges().pipe(
+            map((changes: Array<any>) =>
+              changes.map(c =>
+                ({ key: c.payload.key, ...c.payload.val() })
+              )
+            )
+          ).subscribe(async comp => {
+            this.compInfo = comp.filter(ele=>ele.key==createdata)[0];
+            this.campId = createdata;
+            this.getUser(this.compInfo.ownerId)
+            this.done = (this.compInfo.done || []).length
+            this.compdata = this.compInfo.createdData;
+            this.key = this.compInfo.key
+            this.view = this.compInfo.view
+            // comp[0].done.forEach( async (ele) => {
+            
+              this.compInfo.done.forEach(id => {
+                this.getUser(id).then(e=>{
+                  //console.log('user is',e.docs[0].data())
+                  this.viewers.push(e.docs[0].data())
+                })
+              });
+            // for (const ele of this.compInfo.done) {
+            //   console.log(ele);
+              
+            //   let user = await this.getUser(ele)
+            //   if(user.docs[0]){
+            //     this.viewers.push(user.docs[0].data())
+            //   }            
+            // }
   
-   
+  
+            // })
+          });
+    }else{
+      this.campingsService.getcampingsList((res =>
+        res.orderByChild('key')))
+        .snapshotChanges().pipe(
+            map((changes: Array<any>) =>
+              changes.map(c =>
+                ({ key: c.payload.key, ...c.payload.val() })
+              )
+            )
+          ).subscribe(async comp => {
+          this.compInfo = comp.filter(ele=>ele.key==createdata)[0];
+            this.campId = createdata;
+           this.getUser(this.compInfo.ownerId)
+            this.done = (this.compInfo.done || []).length
+            this.compdata = this.compInfo.createdData;
+            this.key = this.compInfo.key
+            this.view = this.compInfo.view
+            // comp[0].done.forEach( async (ele) => {
+            console.log('done',this.compInfo)
+            this.compInfo.done.forEach(id => {
+              this.getUser(id).then(e=>{
+                //console.log('user is',e.docs[0].data())
+                this.viewers.push(e.docs[0].data())
+              })
+            });
+            // for (const ele of comp[0].done) {
+            //   console.log(ele);
+              
+            //   let user = await this.getUser(ele)
+            //   if(user.docs[0]){
+            //     this.viewers.push(user.docs[0].data())
+            //   }            
+            // }
+  
+  
+            // })
+          });
+    }
   }
-
   getUser(id) {
-    return this.admin.getDataOfUser(id);
+    return this.firebase.getDataOfUser(id);
+  }
+  deleteComp() {
+    if(this.type == 'subscribe' || this.type =='sub' || !this.type){
+      this.subscribes.deleteSubscripe(this.campId)
+      
+    }else{
+      this.campingsService.deletecamping(this.campId)
+
+    }
+    let text = 'compaign deleted'
+    this.presentAlert(text)
+    this.router.navigate([''])
   }
 
   async presentAlert(title) {
     const alert = await this.alertController.create({
       header: 'Alert',
-     // subHeader: 'Subtitle',
+      // subHeader: 'Subtitle',
       message: title,
       buttons: ['OK']
     });
