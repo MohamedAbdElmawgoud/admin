@@ -28,8 +28,8 @@ export class NotificationsService {
         }  
       });
       let tokens = this.tockens
-      this.tockens = []
-      console.log('tock', tokens)
+     // this.tockens = []
+      //console.log('tock', tokens)
       const options = {
         headers: new HttpHeaders({
           'Authorization': key,
@@ -47,7 +47,7 @@ export class NotificationsService {
       }
       return (this.httpClient.post('Https://fcm.googleapis.com/fcm/send', body, options).toPromise().then(res => {
         console.log(res)
-        tokens =[]
+        // tokens =[]
       })
       )
     })
