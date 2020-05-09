@@ -41,7 +41,12 @@
                       <ion-label>Discount For all:</ion-label>
                       <ion-input type="number" required name="discountAll" value={{lastdiscountAll}} [(ngModel)]="discountAll" id="discountAll"></ion-input>
                     </ion-item>
+  
 
-          <ion-button (click)="creatSetting(email,version,message,AppURl,points,discountVip,discountAll)">save</ion-button>
+                    <ion-item>
+                      <ion-label> number of hours Discount :</ion-label>
+                      <ion-input type="number" required name="Time" value={{lastTime}} [(ngModel)]="Time" id="Time"></ion-input>
+                    </ion-item>
+          <ion-button (click)="creatSetting(email,version,message,AppURl,points,discountVip,discountAll,Time)">save</ion-button>
       </form>
 </ion-content>

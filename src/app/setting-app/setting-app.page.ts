@@ -9,6 +9,7 @@ import { map } from "rxjs/operators";
   styleUrls: ['./setting-app.page.scss'],
 })
 export class SettingAppPage implements OnInit {
+  lastTime: number;
 
 
  
@@ -22,7 +23,7 @@ export class SettingAppPage implements OnInit {
 
  lastSettinig: settings;
  lastpoints: number;
- 
+ Time :number
  lastdiscountVip: number;
  lastdiscountAll: number; 
  lasturl:string;
@@ -52,11 +53,11 @@ export class SettingAppPage implements OnInit {
   this.lastEmail = this.lastSettinig.email;
   this.lastmessage = this.lastSettinig.message;
   this.lastVersion = this.lastSettinig.version;
- 
+ this.lastTime = this.lastSettinig.Time
   console.log(this.lastSettinig) 
       })
     }
- creatSetting(email,version,message,AppURl,points,discountVip,discountAll){
+ creatSetting(email,version,message,AppURl,points,discountVip,discountAll,Time){
   this.setting = {
     email: email,
     version:version,
@@ -64,18 +65,26 @@ export class SettingAppPage implements OnInit {
     AppURl:AppURl,
     point:points,
     discountVip : discountVip,
-    discountAll :discountAll
+    discountAll :discountAll,
+    Time : Time
   }
   console.log(this.setting)
   this.settingService.createsetting(this.setting)
-  this.presentAlert('setting Added successfully')    
-  document.getElementById('points').remove()
-  document.getElementById('version').remove()
-  document.getElementById('message').remove()
-  document.getElementById('email').remove()
-  document.getElementById('AppURl').remove(),
-  document.getElementById('discountVip').remove(),
-  document.getElementById('discountAll').remove()
+  this.presentAlert('setting Added successfully')  
+  
+  setTimeout(() => {
+    this.setting.Time = 0;
+    this.setting.discountAll= 0
+    this.settingService.createsetting(this.setting)
+  }, Time * (1000*60*60));
+  // document.getElementById('points').remove()
+  // document.getElementById('version').remove()
+  // document.getElementById('message').remove()
+  // document.getElementById('email').remove()
+  // document.getElementById('AppURl').remove(),
+  // document.getElementById('discountVip').remove(),
+  // document.getElementById('discountAll').remove(),
+  // document.getElementById('Time').remove()
  }
 
  async presentAlert(title) {

@@ -40,5 +40,6 @@ version:string,
 message: string,
 AppURl: string,
 discountVip:number,
-discountAll:number
+discountAll:number,
+Time: number
 }
