@@ -39,4 +39,4 @@ export class AdminService {
       .ref.where('uid', '==', id).get()
   }
 }
-
+ 

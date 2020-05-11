@@ -99,7 +99,8 @@ getCompinge() {
                )
              )
            ).subscribe(subscribes => {
-             this.compaignValue =[]              
+             this.compaignValue =[]   
+             this.compaignView['']           
              subscribes.forEach(ele => {
 
                let views = `${ele.view}/${ele.done ? ele.done.length : 0}`

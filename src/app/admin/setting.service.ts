@@ -31,6 +31,9 @@ export class SettingService {
   getAllsettings() : AngularFireList<settings>{
    return this.db.list(this.dbPath);
   }
+  updatesettings(key: string, value: any): Promise<void> {
+    return this.db.object(this.dbPath + '/' + key).update( value);
+  }
 }
 
 export interface settings{
@@ -41,5 +44,6 @@ message: string,
 AppURl: string,
 discountVip:number,
 discountAll:number,
-Time: number
+Time: number,
+hours : number
 }

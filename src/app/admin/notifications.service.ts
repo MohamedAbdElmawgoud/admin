@@ -38,17 +38,16 @@ export class NotificationsService {
       body = {
         "notification": {
           "title": title,
-          "body": content, 
+          "body": body
           
-
+ 
         },  
         'registration_ids': tokens
-
       }
       return (this.httpClient.post('Https://fcm.googleapis.com/fcm/send', body, options).toPromise().then(res => {
         console.log(res)
         // tokens =[]
-      })
+      }) 
       )
     })
     //  return (<any>await this.httpClient.post(`Https://fcm.googleapis.com/fcm/send`,body,headers)).toPromise()

@@ -52,7 +52,7 @@ export class UserPage implements OnInit {
       
      this.users.push(element)
     });
-    console.log(this.users)
+  //  console.log(this.users)
   })
   }
   deleteUser(id){

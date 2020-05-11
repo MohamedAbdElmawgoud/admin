@@ -45,7 +45,7 @@ getmessage(){
       )
     ).subscribe(message =>{
       this.Allmessage =message
-console.log(this.Allmessage) 
+      //console.log(this.Allmessage) 
     }); 
 }
 delete(key){

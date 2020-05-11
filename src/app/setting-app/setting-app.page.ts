@@ -45,15 +45,35 @@ export class SettingAppPage implements OnInit {
           )
         )
       ).subscribe(  res =>{
+       // console.log('set',res[res.length-1])
   this.lastSettinig =res[res.length-1]
   this.lastpoints =  this.lastSettinig.point;
   this.lastdiscountVip = this.lastSettinig.discountVip;
-  this.lastdiscountAll = this.lastSettinig.discountAll;
+  
   this.lasturl = this.lastSettinig.AppURl;
   this.lastEmail = this.lastSettinig.email;
   this.lastmessage = this.lastSettinig.message;
   this.lastVersion = this.lastSettinig.version;
- this.lastTime = this.lastSettinig.Time
+ 
+ if(this.lastSettinig.Time <= Date.now() && this.lastSettinig.discountAll > 0){
+  this.lastTime = 0
+  this.lastdiscountAll = 0;
+  let editSetting = {
+    ...res[res.length-1],
+    discountAll : 0,
+    hours :0
+   }
+   
+   this.settingService.updatesettings(res[res.length-1].key ,editSetting)
+ }
+ if (this.lastSettinig.discountAll == 0){
+  this.lastTime =0
+  this.lastdiscountAll = this.lastSettinig.discountAll;
+ }
+ else{
+  this.lastdiscountAll = this.lastSettinig.discountAll;
+  this.lastTime = this.lastSettinig.hours
+ }
   console.log(this.lastSettinig) 
       })
     }
@@ -66,17 +86,18 @@ export class SettingAppPage implements OnInit {
     point:points,
     discountVip : discountVip,
     discountAll :discountAll,
-    Time : Time
+    Time :  Date.now() + ((3600 * 1000) * Time),
+    hours: Time
   }
-  console.log(this.setting)
+  console.log(Date.now() + ((3600 * 1000) * Time))
   this.settingService.createsetting(this.setting)
   this.presentAlert('setting Added successfully')  
-  
-  setTimeout(() => {
-    this.setting.Time = 0;
-    this.setting.discountAll= 0
-    this.settingService.createsetting(this.setting)
-  }, Time * (1000*60*60));
+ // this.setting.Time =  Date.now() + ((3600 * 1000) * Time);
+  // setTimeout(() => {
+  //   this.setting.Time = 0;
+  //   this.setting.discountAll= 0
+  //   this.settingService.createsetting(this.setting)
+  // }, Time * (1000*60*60));
   // document.getElementById('points').remove()
   // document.getElementById('version').remove()
   // document.getElementById('message').remove()

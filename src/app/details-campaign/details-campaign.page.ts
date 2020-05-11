@@ -39,7 +39,7 @@ export class DetailsCampaignPage implements OnInit {
 
   async ngOnInit() {
     this.user = await this.storage.get('User');
-    this.getPoint()
+  
     this.data = this.route
       .queryParamMap
       .subscribe(v => {
@@ -52,14 +52,9 @@ export class DetailsCampaignPage implements OnInit {
       });
   }
 
-  getPoint() {
-    this.firebase.getDataOfUser("admin").then(point => {
-      this.showPoint = point.docs[0].data().point
-    })
-    return this.showPoint
-  }
+  
   getCompain(createdata , type) {
-    if(type == 'subscribe'){
+    if(type == 'subscribe' || type== 'sub' || type == null){
       this.subscribes.getsubscribesList((res =>
         res.orderByChild('key')
           )).snapshotChanges().pipe(
