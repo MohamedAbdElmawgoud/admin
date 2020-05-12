@@ -12,7 +12,7 @@ import { subscribesService } from "src/app/admin/subscripe";
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  compaignView: {};
+  compaignView= [];
   compaignValue = [];  
   compaign=false;
   done=[];
@@ -27,8 +27,8 @@ export class Tab1Page {
    
   }
 
-  ionViewWillEnter() {
-    this.getCompinge()
+  async ionViewWillEnter() {
+    await this.getCompinge()
   
   }
 async createCompinge() {

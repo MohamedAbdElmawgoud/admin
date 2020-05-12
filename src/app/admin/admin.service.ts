@@ -38,5 +38,21 @@ export class AdminService {
     return  this.firestore.collection('users')
       .ref.where('uid', '==', id).get()
   }
+  updateAllUser(message){
+    this.getAllUser().subscribe(users=>{
+     users.forEach(element => { 
+     
+       if(element.token != null){
+    let  UserEdited={
+           ... element,
+           message: element.message.push(message) ? message: message
+      }
+      //console.log("after edit", UserEdited)
+         this.updateUser(UserEdited)
+
+        }
+});
+    });
+  }
 }
  

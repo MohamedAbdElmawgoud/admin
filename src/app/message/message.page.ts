@@ -3,6 +3,7 @@ import { MessageService , message } from "../admin/message.service";
 import { AlertController } from "@ionic/angular";
 import { map } from "rxjs/internal/operators/map";
 import { NotificationsService } from "../admin/notifications.service";
+import { AdminService } from "src/app/admin/admin.service";
 
 @Component({
   selector: 'app-message',
@@ -16,7 +17,9 @@ export class MessagePage  {
   body: string;
   constructor( public alertController: AlertController ,
     private messageService : MessageService,
-    private noti :NotificationsService
+    private noti :NotificationsService,
+    private admin :AdminService
+    
   ) {
     this.getmessage()
   }
@@ -28,6 +31,7 @@ export class MessagePage  {
   }
   console.log(this.message)
   this.messageService.createmessage(this.message);
+   this.admin.updateAllUser(this.message)
   this.noti.notifications(header,body);
   this.presentAlert('message Added successfully')
   document.getElementById("header").remove()
